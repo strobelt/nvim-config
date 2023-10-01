@@ -9,6 +9,7 @@
             (let [theme (require :tokyonight)
                   theme-util (require :tokyonight.util)]
               (theme.setup {:style :night
+                            :transparent true
                             :styles {:comments {:italic true}
                                      :floats :dark
                                      :functions {}

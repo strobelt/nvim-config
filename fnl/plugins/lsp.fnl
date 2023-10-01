@@ -58,6 +58,15 @@
                                 (nvim.buf_set_keymap bufnr :n :<leader>li ":lua require('telescope.builtin').lsp_implementations()<cr>" {:noremap true})))]
               ;; To add support to more language servers check:
               ;; https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+              ;; C#
+              (lsp.omnisharp.setup {:cmd ["/home/strobelt/.cache/omnisharp/run"]
+                                    :organize_imports_on_format true
+                                    :enable_import_completion true
+                                    :enable_roslyn_analyzers true
+                                    :on_attach on_attach
+                                    :handlers handlers
+                                    :before_init before_init
+                                    :capabilities capabilities})
 
               ;; Clojure
               (lsp.clojure_lsp.setup {:on_attach on_attach

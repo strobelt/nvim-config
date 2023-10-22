@@ -68,6 +68,8 @@
                                     :before_init before_init
                                     :capabilities capabilities})
 
+              (lsp.csharp_ls.setup {})
+
               ;; Clojure
               (lsp.clojure_lsp.setup {:on_attach on_attach
                                       :handlers handlers

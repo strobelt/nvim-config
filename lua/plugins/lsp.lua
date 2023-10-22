@@ -45,6 +45,7 @@ local function _2_()
   end
   on_attach = _4_
   lsp.omnisharp.setup({cmd = {"/home/strobelt/.cache/omnisharp/run"}, organize_imports_on_format = true, enable_import_completion = true, enable_roslyn_analyzers = true, on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
+  lsp.csharp_ls.setup({})
   return lsp.clojure_lsp.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
 end
 return {{"neovim/nvim-lspconfig", config = _2_}}

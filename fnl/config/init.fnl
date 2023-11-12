@@ -5,7 +5,7 @@
 (nvim.set_keymap :n :<space> :<nop> {:noremap true})
 
 (let [options
-      { :expandtab true
+      {:expandtab true
        :tabstop 2
        :shiftwidth 2
        :softtabstop 2

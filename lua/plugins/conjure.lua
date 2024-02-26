@@ -8,4 +8,4 @@ local function _2_()
   nvim.g["conjure#client#clojure#nrepl#connection#auto_repl#enabled"] = false
   return nil
 end
-return {{"Olical/conjure", branch = "master", init = _2_}}
+return {{"Olical/conjure", lazy = true, ft = {"clojure"}, init = _2_}}

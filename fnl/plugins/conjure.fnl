@@ -2,7 +2,8 @@
 (local nvim (autoload :nvim))
 
 [{1 :Olical/conjure
-  :branch "master"
+  :lazy true
+  :ft [:clojure]
   :init (fn []
           (set nvim.g.conjure#mapping#doc_word "K")
           (set nvim.g.conjure#client#clojure#nrepl#eval#auto_require false)

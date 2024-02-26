@@ -14,6 +14,8 @@
                                                     :java
                                                     :javascript
                                                     :json
+                                                    :rust
+                                                    :toml
                                                     :lua
                                                     :markdown
                                                     :yaml]})))}]

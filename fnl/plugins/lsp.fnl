@@ -89,8 +89,9 @@
   :config (fn []
             (let [bufnr (vim.api.nvim_get_current_buf)]
               (tset vim.g "rustaceanvim" {:server {:on_attach (fn [client bufnr]
-                                                                (do 
-                                                                  (on_attach client bufnr)
-                                                                  (nvim.buf_set_keymap bufnr :n :<leader>la "<cmd>lua vim.cmd.RustLsp('codeAction')<CR>" {:noremap true})
-                                                                  (nvim.buf_set_keymap bufnr :v :<leader>la "<cmd>lua vim.cmd.RustLsp('rangeCodeAction')<CR>" {:noremap true}) ))}})
+                                (do 
+                                  (on_attach client bufnr)
+                                  (nvim.set_keymap :n :<localleader>C ":RustLsp debuggables<CR>" {:noremap true})
+                                  (nvim.buf_set_keymap bufnr :n :<leader>la "<cmd>lua vim.cmd.RustLsp('codeAction')<CR>" {:noremap true})
+                                  (nvim.buf_set_keymap bufnr :v :<leader>la "<cmd>lua vim.cmd.RustLsp('rangeCodeAction')<CR>" {:noremap true})))}})
               ))}]

@@ -54,6 +54,7 @@ local function _4_()
   local bufnr = vim.api.nvim_get_current_buf()
   local function _5_(client, bufnr0)
     on_attach(client, bufnr0)
+    nvim.set_keymap("n", "<localleader>C", ":RustLsp debuggables<CR>", {noremap = true})
     nvim.buf_set_keymap(bufnr0, "n", "<leader>la", "<cmd>lua vim.cmd.RustLsp('codeAction')<CR>", {noremap = true})
     return nvim.buf_set_keymap(bufnr0, "v", "<leader>la", "<cmd>lua vim.cmd.RustLsp('rangeCodeAction')<CR>", {noremap = true})
   end

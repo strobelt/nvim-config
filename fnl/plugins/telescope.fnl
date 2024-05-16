@@ -28,10 +28,6 @@
                                                                "!.git"
                                                                "--iglob"
                                                                "!node_modules"
-                                                               "--iglob"
-                                                               "!.clj-kondo"
-                                                               "--iglob"
-                                                               "!.lsp"
                                                                "--hidden"]}
                                 :extensions {:ui-select {1 (themes.get_dropdown {})}}
                                 :pickers {:find_files {:find_command ["rg"
@@ -40,9 +36,5 @@
                                                                       "!.git"
                                                                       "--iglob"
                                                                       "!node_modules"
-                                                                      "--iglob"
-                                                                      "!.clj-kondo"
-                                                                      "--iglob"
-                                                                      "!.lsp"
                                                                       "--hidden"]}}})
               (telescope.load_extension "ui-select")))}]

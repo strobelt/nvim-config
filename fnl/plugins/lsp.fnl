@@ -93,5 +93,18 @@
                                   (on_attach client bufnr)
                                   (nvim.set_keymap :n :<localleader>C ":RustLsp debuggables<CR>" {:noremap true})
                                   (nvim.buf_set_keymap bufnr :n :<leader>la "<cmd>lua vim.cmd.RustLsp('codeAction')<CR>" {:noremap true})
-                                  (nvim.buf_set_keymap bufnr :v :<leader>la "<cmd>lua vim.cmd.RustLsp('rangeCodeAction')<CR>" {:noremap true})))}})
-              ))}]
+                                  (nvim.buf_set_keymap bufnr :v :<leader>la "<cmd>lua vim.cmd.RustLsp('rangeCodeAction')<CR>" {:noremap true})))}})))}
+ 
+
+ {1 :scalameta/nvim-metals
+  :dependencies [:nvim-lua/plenary.nvim]
+  :lazy true
+  :ft [:scala :sbt :java]
+  :opts (fn []
+          (let [metals (require :metals)]
+                (var config (metals.bare_config))
+            (set config.on_attach on_attach)
+            config))
+  :config (fn [_ config]
+           (let [metals (require :metals)]
+            (metals.initialize_or_attach config)))}]

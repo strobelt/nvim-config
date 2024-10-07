@@ -61,4 +61,14 @@ local function _4_()
   vim.g["rustaceanvim"] = {server = {on_attach = _5_}}
   return nil
 end
-return {{"neovim/nvim-lspconfig", dependencies = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"}, config = _2_}, {"mrcjkb/rustaceanvim", lazy = true, ft = {"rust"}, config = _4_}}
+local function _6_()
+  local metals = require("metals")
+  local config = metals.bare_config()
+  config.on_attach = on_attach
+  return config
+end
+local function _7_(_, config)
+  local metals = require("metals")
+  return metals.initialize_or_attach(config)
+end
+return {{"neovim/nvim-lspconfig", dependencies = {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim"}, config = _2_}, {"mrcjkb/rustaceanvim", lazy = true, ft = {"rust"}, config = _4_}, {"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim"}, lazy = true, ft = {"scala", "sbt", "java"}, opts = _6_, config = _7_}}

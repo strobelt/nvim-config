@@ -10,6 +10,8 @@
 ;clear highlighting on enter in normal mode
 (nvim.set_keymap :n :<CR> ":noh<CR><CR>" {:noremap true})
 
+(nvim.ex.autocmd "FileType json set formatprg=jq")
+
 (let [options
       {:encoding "utf-8"
        :spelllang "en_us"

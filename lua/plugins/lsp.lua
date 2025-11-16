@@ -46,8 +46,7 @@ local function _2_()
   before_init = _3_
   mason.setup({ui = {icons = {package_installed = "\239\129\152", package_pending = "\239\130\169", package_uninstalled = "\239\132\140"}}})
   mason_lspconfig.setup()
-  lsp.omnisharp.setup({cmd = {"/home/strobelt/.cache/omnisharp/run"}, organize_imports_on_format = true, enable_import_completion = true, enable_roslyn_analyzers = true, on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
-  lsp.csharp_ls.setup({})
+  lsp.omnisharp.setup({cmd = {"/usr/lib/omnisharp-roslyn/OmniSharp"}, organize_imports_on_format = true, enable_import_completion = true, enable_roslyn_analyzers = true, on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
   return lsp.clojure_lsp.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
 end
 local function _4_()

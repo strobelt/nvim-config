@@ -66,7 +66,7 @@
               (mason-lspconfig.setup)
 
               ;; C#
-              (lsp.omnisharp.setup {:cmd ["/home/strobelt/.cache/omnisharp/run"]
+              (lsp.omnisharp.setup {:cmd ["/usr/lib/omnisharp-roslyn/OmniSharp"]
                                     :organize_imports_on_format true
                                     :enable_import_completion true
                                     :enable_roslyn_analyzers true
@@ -75,7 +75,7 @@
                                     :before_init before_init
                                     :capabilities capabilities})
 
-              (lsp.csharp_ls.setup {})
+              ;(lsp.csharp_ls.setup {})
 
               ;; Clojure
               (lsp.clojure_lsp.setup {:on_attach on_attach

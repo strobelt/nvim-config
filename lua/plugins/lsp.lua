@@ -1,6 +1,6 @@
--- [nfnl] Compiled from fnl/plugins/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/lsp.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local nvim = autoload("nvim")
 local function define_signs(prefix)
   local error = (prefix .. "SignError")
@@ -32,7 +32,6 @@ local function on_attach(client, bufnr)
   return nvim.buf_set_keymap(bufnr, "n", "<leader>li", ":lua require('telescope.builtin').lsp_implementations()<cr>", {noremap = true})
 end
 local function _2_()
-  local lsp = require("lspconfig")
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
   local cmplsp = require("cmp_nvim_lsp")
@@ -46,9 +45,8 @@ local function _2_()
   before_init = _3_
   mason.setup({ui = {icons = {package_installed = "\239\129\152", package_pending = "\239\130\169", package_uninstalled = "\239\132\140"}}})
   mason_lspconfig.setup()
-  lsp.omnisharp.setup({cmd = {"/home/strobelt/.cache/omnisharp/run"}, organize_imports_on_format = true, enable_import_completion = true, enable_roslyn_analyzers = true, on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
-  lsp.csharp_ls.setup({})
-  return lsp.clojure_lsp.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
+  vim.lsp.config("csharp", {cmd = {"/home/strobelt/.cache/omnisharp/run"}, organize_imports_on_format = true, enable_import_completion = true, enable_roslyn_analyzers = true, on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
+  return vim.lsp.config("clojure", {on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
 end
 local function _4_()
   local bufnr = vim.api.nvim_get_current_buf()

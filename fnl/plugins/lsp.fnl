@@ -37,8 +37,7 @@
 [{1 :neovim/nvim-lspconfig
   :dependencies [:williamboman/mason.nvim :williamboman/mason-lspconfig.nvim]
   :config (fn []
-            (let [lsp (require :lspconfig)
-                  mason (require :mason)
+            (let [mason (require :mason)
                   mason-lspconfig (require :mason-lspconfig)
                   cmplsp (require :cmp_nvim_lsp)
                   handlers {"textDocument/publishDiagnostics"
@@ -66,22 +65,20 @@
               (mason-lspconfig.setup)
 
               ;; C#
-              (lsp.omnisharp.setup {:cmd ["/home/strobelt/.cache/omnisharp/run"]
-                                    :organize_imports_on_format true
-                                    :enable_import_completion true
-                                    :enable_roslyn_analyzers true
-                                    :on_attach on_attach
-                                    :handlers handlers
-                                    :before_init before_init
-                                    :capabilities capabilities})
-
-              (lsp.csharp_ls.setup {})
+              (vim.lsp.config :csharp {:cmd ["/home/strobelt/.cache/omnisharp/run"]
+                                       :organize_imports_on_format true
+                                       :enable_import_completion true
+                                       :enable_roslyn_analyzers true
+                                       :on_attach on_attach
+                                       :handlers handlers
+                                       :before_init before_init
+                                       :capabilities capabilities})
 
               ;; Clojure
-              (lsp.clojure_lsp.setup {:on_attach on_attach
-                                      :handlers handlers
-                                      :before_init before_init
-                                      :capabilities capabilities})))}
+              (vim.lsp.config :clojure {:on_attach on_attach
+                                        :handlers handlers
+                                        :before_init before_init
+                                        :capabilities capabilities})))}
 
  {1 :mrcjkb/rustaceanvim
   :lazy true

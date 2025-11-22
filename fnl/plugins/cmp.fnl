@@ -3,26 +3,27 @@
   :lazy true}
 
  {1 :saghen/blink.cmp
-  :version "*"
-  :lazy false
-
   :dependencies [:rafamadriz/friendly-snippets
                  :PaterJason/cmp-conjure
                  :mikavilpas/blink-ripgrep.nvim
                  :L3MON4D3/LuaSnip]
 
   :opts {:keymap {:preset :enter
+                  :<S-Tab> [:select_prev :fallback]
                   :<Tab> [:select_next :fallback]}
 
          :appearance {:use_nvim_cmp_as_default true
                       :nerd_font_variant :mono}
 
          :completion {:ghost_text {:enabled true}
+                      :documentation {:auto_show true}
                       :menu {:draw {:columns [[:kind_icon]
                                               {1 :label
                                                2 :label_description
                                                :gap 1}
                                               [:source_name]]}}}
+
+         :fuzzy {:implementation "prefer_rust"}
 
          :snippets {:preset :luasnip}
 

@@ -34,9 +34,15 @@
     (vim.api.nvim_buf_set_keymap bufnr :n :<leader>lr ":lua require('telescope.builtin').lsp_references()<cr>" {:noremap true})
     (vim.api.nvim_buf_set_keymap bufnr :n :<leader>li ":lua require('telescope.builtin').lsp_implementations()<cr>" {:noremap true})))
 
-[{1 :neovim/nvim-lspconfig
+[{1 :williamboman/mason-lspconfig.nvim
+  :dependencies [:neovim/nvim-lspconfig
+                 :williamboman/mason.nvim
+                 :owallb/mason-auto-install.nvim]
   :config (fn []
-            (let [handlers {"textDocument/publishDiagnostics"
+            (let [mason (require :mason)
+                  mason-lspconfig (require :mason-lspconfig)
+                  mason-auto-install (require :mason-auto-install)
+                  handlers {"textDocument/publishDiagnostics"
                             (vim.lsp.with
                               vim.lsp.diagnostic.on_publish_diagnostics
                               {:severity_sort true
@@ -67,7 +73,13 @@
                                                               root ((util.root_pattern patterns) pattern)]
                                                           (on_dir (or root fallback))))})
 
-              (vim.lsp.enable :clojure_lsp)))}
+              (mason.setup {:ui {:icons {:package_installed ""
+                                         :package_pending ""
+                                         :package_uninstalled ""}}})
+
+              (mason-auto-install.setup {:packages ["clojure-lsp"]})
+
+              (mason-lspconfig.setup)))}
 
  {1 :mrcjkb/rustaceanvim
   :lazy true

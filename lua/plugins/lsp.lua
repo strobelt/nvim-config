@@ -32,6 +32,9 @@ local function on_attach(client, bufnr)
   return vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":lua require('telescope.builtin').lsp_implementations()<cr>", {noremap = true})
 end
 local function _2_()
+  local mason = require("mason")
+  local mason_lspconfig = require("mason-lspconfig")
+  local mason_auto_install = require("mason-auto-install")
   local handlers = {["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {severity_sort = true, update_in_insert = true, underline = true, virtual_text = false}), ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "single"}), ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single"})}
   local before_init
   local function _3_(params)
@@ -49,7 +52,9 @@ local function _2_()
     return on_dir((root or fallback))
   end
   vim.lsp.config("clojure_lsp", {root_dir = _4_})
-  return vim.lsp.enable("clojure_lsp")
+  mason.setup({ui = {icons = {package_installed = "\239\129\152", package_pending = "\239\130\169", package_uninstalled = "\239\132\140"}}})
+  mason_auto_install.setup({packages = {"clojure-lsp"}})
+  return mason_lspconfig.setup()
 end
 local function _5_()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -72,4 +77,4 @@ local function _8_(_, config)
   local metals = require("metals")
   return metals.initialize_or_attach(config)
 end
-return {{"neovim/nvim-lspconfig", config = _2_}, {"mrcjkb/rustaceanvim", lazy = true, ft = {"rust"}, config = _5_}, {"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim"}, lazy = true, ft = {"scala", "sbt", "java"}, opts = _7_, config = _8_}}
+return {{"williamboman/mason-lspconfig.nvim", dependencies = {"neovim/nvim-lspconfig", "williamboman/mason.nvim", "owallb/mason-auto-install.nvim"}, config = _2_}, {"mrcjkb/rustaceanvim", lazy = true, ft = {"rust"}, config = _5_}, {"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim"}, lazy = true, ft = {"scala", "sbt", "java"}, opts = _7_, config = _8_}}

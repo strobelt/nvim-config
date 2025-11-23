@@ -12,6 +12,8 @@
 
 (nvim.ex.autocmd "FileType json set formatprg=jq")
 
+(nvim.set_keymap :t :<Esc> "<C-\\><C-n>" {:noremap true})
+
 (let [options
       {:encoding "utf-8"
        :spelllang "en_us"

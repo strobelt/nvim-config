@@ -1,6 +1,6 @@
--- [nfnl] Compiled from fnl/plugins/vim-jack-in.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/vim-jack-in.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local nvim = autoload("nvim")
 local core = autoload("nfnl.core")
 local function _2_()
@@ -8,6 +8,6 @@ local function _2_()
   for option, value in pairs(options) do
     core.assoc(nvim.g, option, value)
   end
-  return nil
+  return vim.keymap.set("n", "<leader>L", ":Lein!<CR>")
 end
 return {{"clojure-vim/vim-jack-in", dependencies = {"radenling/vim-dispatch-neovim", "tpope/vim-dispatch"}, lazy = true, ft = {"clojure"}, config = _2_}}

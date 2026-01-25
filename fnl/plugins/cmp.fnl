@@ -7,6 +7,7 @@
                  :PaterJason/cmp-conjure
                  :mikavilpas/blink-ripgrep.nvim
                  :L3MON4D3/LuaSnip]
+  :build "cargo build --release"
 
   :opts {:keymap {:preset :enter
                   :<S-Tab> [:select_prev :fallback]

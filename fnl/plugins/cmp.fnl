@@ -13,27 +13,22 @@
                   :<S-Tab> [:select_prev :fallback]
                   :<Tab> [:select_next :fallback]}
 
+         :completion {:ghost_text {:enabled true}
+                      :documentation {:auto_show false}
+                      :list {:selection {:preselect true}}
+                      :menu {:auto_show false
+                             :draw {:columns [[:kind_icon]
+                                              {1 :label
+                                               2 :label_description
+                                               :gap 3}
+                                              [:source_name]]}}}
+
          :appearance {:use_nvim_cmp_as_default true
                       :nerd_font_variant :mono}
 
-         :completion {:ghost_text {:enabled true}
-                      :documentation {:auto_show true}
-                      :menu {:draw {:columns [[:kind_icon]
-                                              {1 :label
-                                               2 :label_description
-                                               :gap 1}
-                                              [:source_name]]}}}
-
          :fuzzy {:implementation "prefer_rust"}
 
-         :snippets {:preset :luasnip}
-
-         :cmdline {:enabled false}
-
-         :sources {:default [:lsp :path :snippets :buffer :conjure :ripgrep]
-                   :providers {:conjure {:name :conjure
-                                         :module :blink.compat.source
-                                         :score_offset -3}
-                               :ripgrep {:module :blink-ripgrep
+         :sources {:default [:lsp :path :snippets :buffer :ripgrep]
+                   :providers {:ripgrep {:module :blink-ripgrep
                                          :name :Ripgrep
                                          :score_offset -3}}}}}]

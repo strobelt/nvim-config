@@ -28,7 +28,11 @@
 
          :fuzzy {:implementation "prefer_rust"}
 
-         :sources {:default [:lsp :path :snippets :buffer :ripgrep]
-                   :providers {:ripgrep {:module :blink-ripgrep
-                                         :name :Ripgrep
-                                         :score_offset -3}}}}}]
+         :sources {:default [:lsp :path :snippets :buffer :ripgrep :beancount]
+                   :providers {:ripgrep  {:module :blink-ripgrep
+                                          :name :Ripgrep
+                                          :score_offset -3}
+                               :beancount {:name :beancount
+                                           :module :beancount.completion.blink
+                                           :score_offset -100
+                                           :opts {:trigger_characters [":" "#" "^" " "]}}}}}}]
